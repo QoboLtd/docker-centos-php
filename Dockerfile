@@ -1,7 +1,7 @@
 FROM qoboltd/docker-centos-base
 
 ENV container docker
-ARG REMI_REPO=remi-php71
+ARG REMI_REPO=remi-php56
 
 # Install Remi repo
 RUN rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
