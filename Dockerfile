@@ -1,19 +1,17 @@
 FROM qoboltd/docker-centos-base
 
-ENV container docker
 ARG REMI_REPO=remi-php56
 
 # Install Remi repo
 RUN rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
-# Enable REMI PHP 5.6
+# Enable REMI PHP
 RUN yum-config-manager --enable ${REMI_REPO}
 
 # Install PHP and Tools 
-RUN yum -y install php-bcmath \
+RUN yum -y install --setopt=tsflags=nodocs php-bcmath \
     php-cli \
     php-common \
-    php-fpm \
     php-gd \
     php-intl \
     php-json \
@@ -28,7 +26,9 @@ RUN yum -y install php-bcmath \
     php-soap \
     php-xml \
     php-xmlrpc \
-    mariadb
+    mariadb \
+    && yum clean all \
+    && rm -rf /var/cache/yum
 
 # Configure PHP timezone
 RUN sed -i -e 's~^;date.timezone =$~date.timezone = UTC~g' /etc/php.ini
