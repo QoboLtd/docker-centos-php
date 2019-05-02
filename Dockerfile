@@ -4,7 +4,7 @@ LABEL org.label-schema.schema-version="1.0" \
     org.label-schema.name="CentOS with REMI PHP Image" \
     org.label-schema.vendor="Qobo Ltd" \
     org.label-schema.livence="MIT" \
-    org.label-schema.build-data="201806134"
+    org.label-schema.build-data="20181004"
 
 MAINTAINER Qobo Ltd info@qobo.biz
 
@@ -34,6 +34,7 @@ RUN yum -y install --setopt=tsflags=nodocs php-bcmath \
     php-soap \
     php-xml \
     php-xmlrpc \
+    php-imap \
     mariadb \
     && yum clean all \
     && rm -rf /var/cache/yum
