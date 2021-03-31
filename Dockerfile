@@ -35,6 +35,7 @@ RUN yum -y install --setopt=tsflags=nodocs php-bcmath \
     php-xml \
     php-xmlrpc \
     php-imap \
+    php-zip \
     mariadb \
     && yum clean all \
     && rm -rf /var/cache/yum
